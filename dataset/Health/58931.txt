@@ -1,0 +1,8 @@
+This is in fact a hot topic in medicine these days, and much of the
+medical literature is devoted to this.  The most heavily funded studies
+these days are for outcome research, and physicians (and others!) are
+constantly questionning whether what we do it truly effective in any given
+situation.  QA activities are a routine part of every hospital's
+administrative function and are required by accreditation agencies.  There
+are even entire publications devoted to QA issues.
+

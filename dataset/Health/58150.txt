@@ -1,0 +1,20 @@
+I'm not sure who the "original respondent" was but to
+reiterate cones respond to particular portions of the spectrum, just
+as _rods_ respond to certain parts of the visible spectrum (bluegreen
+in our case, reddish in certain amphibia), just as the hoseshoe crab
+_Limulus polyphemus_ photoreceptors respond to a certain portion of
+the spectrum etc.  It is a common misconception to confound wavelength
+specificity with being color sensitive, however the two are not
+synonymous.
+	So in sum and to beat a dead horse:
+	(1) When the outputs of a cone are matched for number of
+absorbed photons _irrespective_ of the absorbed photons wavelength,
+the cone outputs are _indistinguishable_.
+	(2) Cones are simply detectors with different spectral
+sensitivities and are not any more "color sensitive" than are rods,
+ommatidia or other photoreceptors.
+	(3) Color vision arises because outputs of receptors which
+sample different parts of the spectrum (cones in this case) are
+"processed centrally".  (The handwave is intentional)
+
+

@@ -1,0 +1,22 @@
+In science, we want to discover as much truth about the world as possible 
+and we also want to have as much certainty as possible about these 
+discoveries.  Usually there is some trade-off between these two desiderata 
+--- the search for scope and the search for certainty.  
+If 18th century mathematicians had demanded total rigor from Newton and 
+Leibniz then there would probably be no calculus today, because neither 
+of the two could explain calculus in a way that really made sense, since 
+they lacked the concept of a limit.  And in fact, because of the lack of 
+a rigorous foundation, they made a number of errors in their use of calculus. 
+It was only a hundred years later that Weistrass was able to give a solid 
+grounding for the ideas of Newton and Leibniz.  Nonetheless, what Newton 
+and Leibniz did was undoubtedly science and mathematics gained a great 
+deal more from the application of their important ideas than it lost 
+through the mistakes they made.  
+For instance, certain questions cannot be easily investigated with
+statistical methods because the relevant factors are not quantitative.
+(One could argue that this is the case for almost all questions in many
+areas of psychology.  In my opinion, a perusal of many of the papers
+resulting from the attempt by psychologists to force these questions
+into a statistical framework gives the lie to Russell Turpin's
+assertion that current scientific methods "avoid all known errors.")
+

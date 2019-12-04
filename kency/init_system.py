@@ -2,7 +2,7 @@ import os
 import re
 
 from utils.file_manager import FileManager
-from ontology.ontology import OntologyBuilder
+from ontology.ontology_builder import OntologyBuilder
 from preprocessing.keywords_extractor import KeywordsExtractor
 
 from semantic.dandelion_api import DandelionAPI
@@ -14,6 +14,15 @@ from utils.text_cleaner import get_cleaned_text
 """
 # Percorso in cui sono contenute le cartelle contenenti i documenti di interesse per le varie categorie
 dataset_path = '../dataset'
+
+# Percorso in cui sono contenute le cartelle contenenti i documenti di interesse per le varie categorie
+# caricati dall'utente
+user_path = '../user_docs'
+
+# Creazione della cartella per contenere i documenti, relativi alle varie categorie, caricati dall'utente
+if not os.path.exists(user_path):
+    os.makedirs(user_path)
+
 # Lista delle categorie di interesse
 categories = os.listdir(dataset_path)
 
@@ -33,11 +42,15 @@ cat_docs = {}
     INIT DEL SISTEMA CON I DATI CONTENUTI NEL DATASET
 """
 for category in categories:
+    # Creazione della cartella per contenere i documenti, relativi alle categoria in esame, caricati dall'utente
+    if not os.path.exists(user_path + '/' + category):
+        os.makedirs(user_path + '/' + category)
+
     # Collezione dei documenti contenuti nella directory esaminata
     docs = {}
     # Dizionario delle keywords relative alla collezione di documenti
     docs_keywords = {}
-    # Path della cartella contenente i documenti relativa alla categoria esaminata
+    # Path della cartella contenente i documenti relativi alla categoria esaminata
     cat_dir_path = dataset_path + '/' + category
     # Elenco dei file contenuti nella directory esaminata
     files = os.listdir(cat_dir_path)
@@ -54,7 +67,7 @@ for category in categories:
     docs_keywords = ke.extract(docs)
     # Creazione istanza della categoria e assegnazione delle relative proprietà
     cat = ob.add_individual(category, category + '_01')
-    ob.add_property(cat, 'has_name', category + '_01')
+    ob.add_property(cat, 'has_name', category)
 
     # Creazione istanze dei documenti e assegnazione delle relative proprietà
     for document, keywords in docs_keywords.items():
@@ -100,7 +113,7 @@ ob.save_onto()
 """
     SIMULAZIONE DI UTILIZZO DEL SISTEMA DA PARTE DI UN GENERICO UTENTE
 """
-tp = TextProcessor(api, dataset_path, cat_docs, ke)
+"""tp = TextProcessor(api, user_path, cat_docs, ke)
 new_doc_txt = 'The Mona Lisa is a 16th century oil painting created by Leonardo. It is held at the Louvre in Paris. The Mona Lisa is a oil painting.'
 new_doc_cat, new_doc_score, new_doc_fname, new_doc_keys, new_doc_ents  = tp.process_text(new_doc_txt)
 
@@ -135,7 +148,7 @@ for ent in new_doc_ents:
                 ob.add_property(new_doc, 'has_' + predicate, ent['dbpediaURI'])
 
 # Salvataggio delle modifiche effettuate sull'ontologia
-ob.save_onto()
+ob.save_onto()"""
 """
     ################################################################################################################
 """

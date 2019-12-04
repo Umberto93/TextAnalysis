@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="file" uuid="d0e02716-8366-43da-b882-a33c7ff39535">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:D:\Unisa\Big Data\Progetto\TextAnalysis\gui\file.sqlite3</jdbc-url>
+    </data-source>
+  </component>
+</project>

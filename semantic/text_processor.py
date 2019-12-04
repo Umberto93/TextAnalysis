@@ -5,9 +5,9 @@ from utils.text_cleaner import get_cleaned_text
 
 
 class TextProcessor:
-    def __init__(self, api, dataset_path, categories, keywords_extractor):
+    def __init__(self, api, user_path, categories, keywords_extractor):
         self._api = api
-        self._dataset_path = dataset_path
+        self._user_path = user_path
         self._categories = categories
         self._ke = keywords_extractor
         self._file_manager = FileManager()
@@ -33,14 +33,14 @@ class TextProcessor:
 
         # Costruzione del nome da assegnare al documento in cui salveremo il testo passato come parametro di ingresso.
             # Conto i file contenuti all'interno della directory relativa alla categoria a cui appartiene il documento
-        num_docs = len(os.listdir(self._dataset_path + '/' + doc_cat))
+        num_docs = len(os.listdir(self._user_path + '/' + doc_cat))
             # Aggiungo 1 e ottengo, così, il nome da assegnare al nuovo documento.
         fname = str( num_docs + 1) + '.txt'
 
         # Se la categoria del testo fornito in input rientra in quelle di interesse, viene effettuato il salvataggio
         # su file.
         if(doc_cat in self._categories.keys()):
-            self._file_manager.write_file(self._dataset_path + '/' + doc_cat + '/' + fname, text)
+            self._file_manager.write_file(self._user_path + '/' + doc_cat + '/' + fname, text)
 
             # Recupero tutti i documenti relativi alla categoria a cui appartiene il nuovo documento
             docs = self._categories[doc_cat]

@@ -11,6 +11,13 @@ class OntologyBuilder:
     def get_onto(self):
         return self._onto
 
+    def load_onto(self, onto_file_path):
+        self._onto = get_ontology(onto_file_path)
+        self._onto.load()
+        self.build_ontology_schema()
+        self._onto_filepath = onto_file_path
+        return self._onto
+
     def add_individual(self, category, name):
         return self._onto[category](name)
 
@@ -27,6 +34,9 @@ class OntologyBuilder:
         with self._onto:
             # ONTOLOGY CLASS DECLARATION
             class Category(Thing):
+                def __getitem__(self, name):
+                    return getattr(self, name)
+
                 pass
 
             class Business(Category):
@@ -48,9 +58,15 @@ class OntologyBuilder:
                 pass
 
             class Document(Thing):
+                def __getitem__(self, name):
+                    return getattr(self, name)
+
                 pass
 
             class Word(Thing):
+                def __getitem__(self, name):
+                    return getattr(self, name)
+
                 pass
 
             # OBJECT PROPERTY DECLARATION
@@ -62,9 +78,11 @@ class OntologyBuilder:
 
             class has_category(Document >> Category):
                 inverse_property = has_document
+                pass
 
             class has_keyword(Document >> Word):
                 inverse_property = is_keyword_of
+                pass
 
             # DATATYPE PROPERTY DECLARATION
             class has_event(Document >> str):

@@ -1,6 +1,7 @@
 from utils.query_builder import QueryBuilder
 from owlready2 import *
 from utils.file_manager import FileManager
+from ontology.ontology_builder import OntologyBuilder
 
 
 class KencyAPI:
@@ -33,7 +34,7 @@ class KencyAPI:
         res = []
 
         resQuery = list(self._query_builder.get_graph().query("""
-        PREFIX of4: <http://www.fantastic4.org/BigData/FinalProject/of4-ontology.owl#>
+        PREFIX of4: <""" + self._onto.base_iri + """>
         SELECT ?doc (COUNT(?doc) AS ?count)
             WHERE { 
                 ?doc a of4:Document .
@@ -47,26 +48,18 @@ class KencyAPI:
 
         for r in resQuery:
             if int(r[1]) > (min_kic - 1):
-                res.append(r[0].replace('http://www.fantastic4.org/BigData/FinalProject/of4-ontology.owl#', ''))
+                res.append(r[0].replace(self._onto.base_iri, ''))
 
         return res
 
-    def get_words_starting_with(self, start):
-        res = []
+    def get_words_starting_with(self, params):
+        words = self._onto.Word.instances()
+        filtered_words = filter(lambda w: w.has_value[0].startswith(params['start']), words)
 
-        resQuery = list(self._query_builder.get_graph().query("""
-            PREFIX of4: <http://www.fantastic4.org/BigData/FinalProject/of4-ontology.owl#>
-            SELECT ?v
-            WHERE {
-                ?word a of4:Word .
-                ?word of4:has_value ?v .
-                FILTER regex(?v, '^""" + start + """', 'i')
-            }"""))
-
-        for r in resQuery:
-            res.append(str(r[0]))
-
-        return res
+        return list(map(lambda w: {
+            'id': w.name,
+            'value': w.has_value[0]
+        }, filtered_words))
 
     def _to_obj(self, individuals):
         res = []
@@ -111,6 +104,10 @@ class KencyAPI:
 
 
 if __name__ == '__main__':
-    k = KencyAPI('../kency/of4-ontology.owl')
-    res = k.get_related_documents('Health', ['disease', 'candida'], 2)
+    ob = OntologyBuilder()
+    onto = ob.load_onto('../kency/of4-ontology.owl')
+    k = KencyAPI(onto)
+    res = k.get_words_starting_with({
+        'start': 'sna'
+    })
     print(res)

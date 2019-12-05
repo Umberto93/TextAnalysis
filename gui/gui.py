@@ -14,8 +14,7 @@ def py_request(pathname, params=None):
     if pathname == '/articles':
         return api.get_documents(params)
     if pathname == '/keywords':
-        pass
-        #return api.get_words_starting_with()
+        return api.get_words_starting_with(params)
     if pathname == '#classification':
         return 'classification'
     if pathname == '/categories':

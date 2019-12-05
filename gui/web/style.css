@@ -11,6 +11,10 @@ ol, ul {
     list-style: none;
 }
 
+input, button {
+    font-family: 'Noto Sans', sans-serif;
+}
+
 html {
     font-size: 10px;
 }
@@ -139,17 +143,106 @@ section {
 
 .documents header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 40px;
 }
 
+.documents .keyword-chip {
+    margin-right: 5px;
+    padding: 5px 10px;
+
+    background: #18aae2;
+    border-radius: 15.5px;
+
+    color: #fff;
+    font-size: 1.4rem;
+}
+
+.documents .delete-keyword {
+    margin-left: 5px;
+
+    font-size: 1.8rem;
+    vertical-align: top;
+    cursor: pointer;
+}
+
 .documents .search {
-    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    min-width: 300px;
+    height: 42px;
     padding: 10px;
     box-sizing: border-box;
 
-    background: #f0f0f0;
-    border-radius: 18px;
+    background: #f4f4f7;
+    border-radius: 21px;
+
+    color: #adb1ce;
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+}
+
+.documents .search-input {
+    width: 100%;
+
+    background: none;
+    border: none;
+
+    color: #adb1ce;
+}
+
+.documents .search-input::placeholder {
+    color: #adb1ce;
+}
+
+.documents .search-input:focus {
+    outline: none;
+}
+
+.documents .search-button {
+    margin-left: 10px;
+
+    cursor: pointer;
+}
+
+.documents .keywords-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    overflow: auto;
+    margin-top: 10px;
+    padding: 15px;
+
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+.documents .keyword:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.documents .keywords-list .loading .fa {
+    font-size: 2rem;
+}
+
+.documents .keyword {
+    cursor: pointer;
+}
+
+.documents .keyword .highlight {
+    color: #18aae2;
+    font-weight: 700;
+}
+
+.documents .keywords-not-found {
+    font-style: italic;
+    text-align: center;
 }
 
 .documents .selection-menu {

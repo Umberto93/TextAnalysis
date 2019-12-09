@@ -102,7 +102,7 @@ main {
     transform: scale(1.2);
 }
 
-section {
+main > section {
     position: relative;
     width: calc(100% - 300px);
     padding: 25px;
@@ -296,14 +296,17 @@ section {
     color: #18aae2;
 }
 
-.document {
+.documents .document {
     margin: 20px 0;
 }
 
-.document h2 {
-    color: #20243b;
+.documents .document h2 {
     font-size: 1.6rem;
     cursor: pointer;
+}
+
+.documents .document h2 a {
+    color: #20243b;
 }
 
 .document p {
@@ -312,4 +315,9 @@ section {
     font-size: 1.3rem;
     line-height: 2.1rem;
     text-align: justify;
+}
+
+.article-details {
+    display: flex;
+    justify-content: space-between;
 }

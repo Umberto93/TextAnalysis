@@ -1,24 +1,51 @@
 import eel
+
+from kency_app.kency import Kency
 from ontology.ontology_builder import OntologyBuilder
-from utils.kency_api import KencyAPI
+
+from semantic.text_classifier import TextClassifier
+from semantic.entity_recognizer import EntityRecognizer
+from semantic.keywords_extractor import KeywordsExtractor
 
 eel.init('web')
 
-ontology_builder = OntologyBuilder()
-onto = ontology_builder.load_onto('../kency/of4-ontology.owl')
+"""
+    DICHIARAZIONE E INIZIALIZZAZIONE DELLE VARIABILI DI INTERESSE
+"""
+# Percorso in cui sono contenute le cartelle contenenti i documenti di interesse per le varie categorie
+dataset_path = '../dataset'
 
-api = KencyAPI(onto)
+# Percorso in cui sono contenute le cartelle contenenti i documenti inseriti dall'utente e processati
+user_path = '../user_docs'
+
+ob = OntologyBuilder()
+ke = KeywordsExtractor()
+tc = TextClassifier(['17bcd095be24d7870cf09b5d93f344bc'], 3)
+er = EntityRecognizer(
+    ['1950484b2eef4aef8784f97bff21b28f',
+     '90057b00684745d5b4fe2ae0a82432a9',
+     'bda714d81dc54fc8a0bd43398125a4e6'], 3)
+
+print("BENVENUTO IN KENCY\n")
+
+print("===============================================================================================================")
+print(" INIT DEL SISTEMA ")
+print("===============================================================================================================")
+kency = Kency(ob, ke, tc, er, dataset_path, user_path)
 
 @eel.expose
 def py_request(pathname, params=None):
     if pathname == '/articles':
-        return api.get_documents(params)
+        include = params.include if 'include' in params.keys() else []
+        return kency.get_documents(params, include_props=include)
+    if pathname == '/article':
+        return kency.get_document_details(params)
     if pathname == '/keywords':
-        return api.get_words_starting_with(params)
+        return kency.get_words_starting_with(params)
     if pathname == '#classification':
         return 'classification'
     if pathname == '/categories':
-        return api.get_categories()
+        return kency.get_categories()
 
 
 eel.start('index.html', mode='chrome-app')

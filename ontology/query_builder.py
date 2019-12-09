@@ -3,9 +3,9 @@ from owlready2 import *
 
 class QueryBuilder:
     """ La classe consente di effettuare query SPARQL. """
+
     def __init__(self):
-        self._world = World()
-        self._world.get_ontology("../kency/of4-ontology.owl").load()
+        self._world = default_world
         sync_reasoner(self._world)
         self._graph = self._world.as_rdflib_graph()
 

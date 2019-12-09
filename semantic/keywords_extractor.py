@@ -9,6 +9,10 @@ class KeywordsExtractor:
         self._tfidf_transformer = TfidfTransformer()
 
     def extract(self, category_docs, topn=10):
+
+        if not category_docs:
+            return {}
+
         count_matrix = self._countVectorizer.fit_transform(category_docs.values())
         self._tfidf_transformer.fit(count_matrix)
 

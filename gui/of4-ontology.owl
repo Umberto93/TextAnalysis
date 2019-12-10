@@ -12,14 +12,14 @@
   <owl:inverseOf rdf:resource="#has_category"/>
 </owl:ObjectProperty>
 
-<owl:ObjectProperty rdf:about="#is_keyword_of">
-  <owl:inverseOf rdf:resource="#has_keyword"/>
-</owl:ObjectProperty>
-
 <owl:ObjectProperty rdf:about="#has_category">
   <rdfs:domain rdf:resource="#Document"/>
   <rdfs:range rdf:resource="#Category"/>
   <owl:inverseOf rdf:resource="#has_document"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_keyword_of">
+  <owl:inverseOf rdf:resource="#has_keyword"/>
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#has_keyword">
@@ -103,7 +103,15 @@
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 </owl:DatatypeProperty>
 
+<owl:Class rdf:about="#Document">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
 <owl:Class rdf:about="#Category">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Word">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
 </owl:Class>
 
@@ -135,14 +143,6 @@
   <rdfs:subClassOf rdf:resource="#Category"/>
 </owl:Class>
 
-<owl:Class rdf:about="#Document">
-  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-</owl:Class>
-
-<owl:Class rdf:about="#Word">
-  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-</owl:Class>
-
 <Business rdf:about="#Business_01">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <has_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Business</has_name>
@@ -161,6 +161,9 @@
   <has_keyword rdf:resource="#word_sale"/>
   <has_keyword rdf:resource="#word_quarter"/>
   <has_keyword rdf:resource="#word_fourth"/>
+  <has_entity_organisation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Time_Warner</has_entity_organisation>
+  <has_entity_organisation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Google</has_entity_organisation>
+  <has_entity_organisation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Warner_Bros.</has_entity_organisation>
   <has_entity_organisation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Bertelsmann</has_entity_organisation>
   <has_entity_work rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Catwoman_(film)</has_entity_work>
   <has_score_business rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_score_business>
@@ -231,6 +234,8 @@
   <has_keyword rdf:resource="#word_speech"/>
   <has_keyword rdf:resource="#word_current"/>
   <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Alan_Greenspan</has_entity_person>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/China</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Beijing</has_entity_place>
   <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/White_House</has_entity_place>
   <has_score_business rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_score_business>
   <has_path rdf:datatype="http://www.w3.org/2001/XMLSchema#string">../dataset/Business/002.txt</has_path>
@@ -21105,6 +21110,7 @@
   <has_keyword rdf:resource="#word_bulb"/>
   <has_keyword rdf:resource="#word_plate"/>
   <has_keyword rdf:resource="#word_text"/>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Tracey_Emin</has_entity_person>
   <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Henry_Moore</has_entity_person>
   <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Tate_Britain</has_entity_place>
   <has_score_entertainment rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_score_entertainment>
@@ -21170,8 +21176,18 @@
   <has_keyword rdf:resource="#word_fairy"/>
   <has_keyword rdf:resource="#word_danish"/>
   <has_entity_organisation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Odense_Boldklub</has_entity_organisation>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Frederik,_Crown_Prince_of_Denmark</has_entity_person>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Mary,_Crown_Princess_of_Denmark</has_entity_person>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Harold_Bloom</has_entity_person>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Helena_Christensen</has_entity_person>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Harvey_Keitel</has_entity_person>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Roger_Moore</has_entity_person>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Cathy_Freeman</has_entity_person>
   <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Pel%C3%A9</has_entity_person>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Copenhagen</has_entity_place>
   <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Denmark</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Parken_Stadium</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Manhattan</has_entity_place>
   <has_entity_work rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/The_Ugly_Duckling</has_entity_work>
   <has_score_entertainment rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_score_entertainment>
   <has_path rdf:datatype="http://www.w3.org/2001/XMLSchema#string">../dataset/Entertainment/002.txt</has_path>
@@ -35936,6 +35952,7 @@
   <has_keyword rdf:resource="#word_great"/>
   <has_keyword rdf:resource="#word_section"/>
   <has_keyword rdf:resource="#word_home"/>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Spencer,_Indiana</has_entity_place>
   <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/North_Dakota</has_entity_place>
   <has_score_health rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_score_health>
   <has_path rdf:datatype="http://www.w3.org/2001/XMLSchema#string">../dataset/Health/58045.txt</has_path>
@@ -51363,7 +51380,9 @@
   <has_keyword rdf:resource="#word_owner"/>
   <has_keyword rdf:resource="#word_earlier"/>
   <has_keyword rdf:resource="#word_chain"/>
+  <has_entity_organisation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/McDonald's</has_entity_organisation>
   <has_entity_organisation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Popeyes_Louisiana_Kitchen</has_entity_organisation>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Knoxville,_Tennessee</has_entity_place>
   <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Houston</has_entity_place>
   <has_score_other rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_score_other>
   <has_path rdf:datatype="http://www.w3.org/2001/XMLSchema#string">../dataset/Other/2.txt</has_path>
@@ -51398,7 +51417,12 @@
   <has_keyword rdf:resource="#word_desperate"/>
   <has_keyword rdf:resource="#word_plan"/>
   <has_entity_event rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/United_Kingdom_general_election,_2015</has_entity_event>
+  <has_entity_organisation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Conservative_Party_(UK)</has_entity_organisation>
   <has_entity_organisation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Liberal_Democrats</has_entity_organisation>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Patricia_Hewitt</has_entity_person>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Gordon_Brown</has_entity_person>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Tony_Blair</has_entity_person>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Sandra_Gidley</has_entity_person>
   <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/David_Frost</has_entity_person>
   <has_entity_work rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/GMTV</has_entity_work>
   <has_score_politics rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_score_politics>
@@ -51434,6 +51458,11 @@
   <has_keyword rdf:resource="#word_commissioner"/>
   <has_keyword rdf:resource="#word_destroy"/>
   <has_entity_organisation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Information_Commissioner's_Office</has_entity_organisation>
+  <has_entity_organisation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Cabinet_Office</has_entity_organisation>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Richard_Thomas_(actor)</has_entity_person>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Michael_Howard</has_entity_person>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Tony_Blair</has_entity_person>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Alan_Beith</has_entity_person>
   <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Wale_(rapper)</has_entity_person>
   <has_score_politics rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_score_politics>
   <has_path rdf:datatype="http://www.w3.org/2001/XMLSchema#string">../dataset/Politics/002.txt</has_path>
@@ -63717,7 +63746,10 @@
   <has_keyword rdf:resource="#word_hunting"/>
   <has_keyword rdf:resource="#word_british"/>
   <has_keyword rdf:resource="#word_training"/>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Sarah_Claxton</has_entity_person>
   <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Irina_Shevchenko</has_entity_person>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Madrid</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Colchester</has_entity_place>
   <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/London</has_entity_place>
   <has_score_sport rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_score_sport>
   <has_path rdf:datatype="http://www.w3.org/2001/XMLSchema#string">../dataset/Sport/001.txt</has_path>
@@ -63758,6 +63790,10 @@
   <has_keyword rdf:resource="#word_cobh"/>
   <has_entity_organisation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Bupa</has_entity_organisation>
   <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Maria_McCambridge</has_entity_person>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Cobh</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/France</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Australia</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Ireland</has_entity_place>
   <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Dublin</has_entity_place>
   <has_score_sport rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_score_sport>
   <has_path rdf:datatype="http://www.w3.org/2001/XMLSchema#string">../dataset/Sport/002.txt</has_path>
@@ -79691,7 +79727,14 @@
   <has_keyword rdf:resource="#word_sprayed"/>
   <has_entity_organisation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Open_Society_Foundations</has_entity_organisation>
   <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Askar_Akayev</has_entity_person>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Kyrgyzstan</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Ukraine</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Georgia_(U.S._state)</has_entity_place>
   <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Serbia</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/South_Africa</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Indonesia</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Turkey</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Afghanistan</has_entity_place>
   <has_score_technology rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_score_technology>
   <has_path rdf:datatype="http://www.w3.org/2001/XMLSchema#string">../dataset/Technology/001.txt</has_path>
 </Document>
@@ -90407,6 +90450,154 @@
 <Word rdf:about="#word_addiction">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">addiction</has_value>
+</Word>
+
+<Document rdf:about="#Entertainment_doc_user_1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_category rdf:resource="#Entertainment_01"/>
+  <has_keyword rdf:resource="#word_mona"/>
+  <has_keyword rdf:resource="#word_16th"/>
+  <has_keyword rdf:resource="#word_louvre"/>
+  <has_keyword rdf:resource="#word_painting"/>
+  <has_keyword rdf:resource="#word_lisa"/>
+  <has_keyword rdf:resource="#word_paris"/>
+  <has_keyword rdf:resource="#word_century"/>
+  <has_keyword rdf:resource="#word_leonardo"/>
+  <has_keyword rdf:resource="#word_created"/>
+  <has_keyword rdf:resource="#word_held"/>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Leonardo_da_Vinci</has_entity_person>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Louvre</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Paris</has_entity_place>
+  <has_entity_work rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Mona_Lisa</has_entity_work>
+  <has_score_entertainment rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_score_entertainment>
+  <has_path rdf:datatype="http://www.w3.org/2001/XMLSchema#string">../user_docs/Entertainment/user_1.txt</has_path>
+</Document>
+
+<Word rdf:about="#word_mona">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mona</has_value>
+</Word>
+
+<Word rdf:about="#word_16th">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16th</has_value>
+</Word>
+
+<Word rdf:about="#word_lisa">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lisa</has_value>
+</Word>
+
+<Word rdf:about="#word_leonardo">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">leonardo</has_value>
+</Word>
+
+<Document rdf:about="#Other_doc_user_1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_category rdf:resource="#Other_01"/>
+  <has_keyword rdf:resource="#word_voting"/>
+  <has_keyword rdf:resource="#word_poll"/>
+  <has_keyword rdf:resource="#word_party"/>
+  <has_keyword rdf:resource="#word_opinion"/>
+  <has_keyword rdf:resource="#word_main"/>
+  <has_keyword rdf:resource="#word_latest"/>
+  <has_keyword rdf:resource="#word_intention"/>
+  <has_score_other rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_score_other>
+  <has_path rdf:datatype="http://www.w3.org/2001/XMLSchema#string">../user_docs/Other/user_1.txt</has_path>
+</Document>
+
+<Document rdf:about="#Entertainment_doc_user_2">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_category rdf:resource="#Entertainment_01"/>
+  <has_keyword rdf:resource="#word_mona"/>
+  <has_keyword rdf:resource="#word_16th"/>
+  <has_keyword rdf:resource="#word_louvre"/>
+  <has_keyword rdf:resource="#word_painting"/>
+  <has_keyword rdf:resource="#word_lisa"/>
+  <has_keyword rdf:resource="#word_paris"/>
+  <has_keyword rdf:resource="#word_century"/>
+  <has_keyword rdf:resource="#word_leonardo"/>
+  <has_keyword rdf:resource="#word_created"/>
+  <has_keyword rdf:resource="#word_held"/>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Leonardo_da_Vinci</has_entity_person>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Louvre</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Paris</has_entity_place>
+  <has_entity_work rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Mona_Lisa</has_entity_work>
+  <has_score_entertainment rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_score_entertainment>
+  <has_path rdf:datatype="http://www.w3.org/2001/XMLSchema#string">../user_docs/Entertainment/user_2.txt</has_path>
+</Document>
+
+<Document rdf:about="#Entertainment_doc_user_3">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_category rdf:resource="#Entertainment_01"/>
+  <has_keyword rdf:resource="#word_mona"/>
+  <has_keyword rdf:resource="#word_16th"/>
+  <has_keyword rdf:resource="#word_louvre"/>
+  <has_keyword rdf:resource="#word_painting"/>
+  <has_keyword rdf:resource="#word_lisa"/>
+  <has_keyword rdf:resource="#word_paris"/>
+  <has_keyword rdf:resource="#word_century"/>
+  <has_keyword rdf:resource="#word_leonardo"/>
+  <has_keyword rdf:resource="#word_created"/>
+  <has_keyword rdf:resource="#word_held"/>
+  <has_entity_person rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Leonardo_da_Vinci</has_entity_person>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Louvre</has_entity_place>
+  <has_entity_place rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Paris</has_entity_place>
+  <has_entity_work rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/resource/Mona_Lisa</has_entity_work>
+  <has_score_entertainment rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_score_entertainment>
+  <has_path rdf:datatype="http://www.w3.org/2001/XMLSchema#string">../user_docs/Entertainment/user_3.txt</has_path>
+</Document>
+
+<Document rdf:about="#Other_doc_user_2">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_category rdf:resource="#Other_01"/>
+  <has_keyword rdf:resource="#word_voting"/>
+  <has_keyword rdf:resource="#word_poll"/>
+  <has_keyword rdf:resource="#word_party"/>
+  <has_keyword rdf:resource="#word_opinion"/>
+  <has_keyword rdf:resource="#word_main"/>
+  <has_keyword rdf:resource="#word_latest"/>
+  <has_keyword rdf:resource="#word_intention"/>
+  <has_score_other rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_score_other>
+  <has_path rdf:datatype="http://www.w3.org/2001/XMLSchema#string">../user_docs/Other/user_2.txt</has_path>
+</Document>
+
+<Document rdf:about="#Other_doc_user_3">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_category rdf:resource="#Other_01"/>
+  <has_keyword rdf:resource="#word_pathname"/>
+  <has_keyword rdf:resource="#word_params"/>
+  <has_keyword rdf:resource="#word_return"/>
+  <has_keyword rdf:resource="#word_kency"/>
+  <has_keyword rdf:resource="#word_keywords"/>
+  <has_keyword rdf:resource="#word_include"/>
+  <has_keyword rdf:resource="#word_category"/>
+  <has_keyword rdf:resource="#word_article"/>
+  <has_keyword rdf:resource="#word_related"/>
+  <has_keyword rdf:resource="#word_py_request"/>
+  <has_score_other rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_score_other>
+  <has_path rdf:datatype="http://www.w3.org/2001/XMLSchema#string">../user_docs/Other/user_3.txt</has_path>
+</Document>
+
+<Word rdf:about="#word_pathname">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pathname</has_value>
+</Word>
+
+<Word rdf:about="#word_params">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">params</has_value>
+</Word>
+
+<Word rdf:about="#word_kency">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kency</has_value>
+</Word>
+
+<Word rdf:about="#word_py_request">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">py_request</has_value>
 </Word>
 
 

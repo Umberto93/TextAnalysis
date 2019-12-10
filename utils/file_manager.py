@@ -6,7 +6,7 @@ class FileManager:
 
     def read_file(self, path):
         """ Restituisce il contenuto di un file in formato testuale """
-        with open(path, 'r') as f:
+        with open(path, 'r', encoding='utf-8', errors='ignore') as f:
             return f.read()
 
     def write_file(self, path, text):

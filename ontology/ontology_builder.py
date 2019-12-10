@@ -61,15 +61,10 @@ class OntologyBuilder:
         :param object: valore (individuo o letterale) da assegnare alla proprietà.
         """
 
-        if (type(self._onto[predicate]) == ObjectPropertyClass):
-            # Il valore di una Object Property associata a un certo inividuo è una lista di oggetti (individui).
-            # L'aggiunta alla lista deve essere effettuata se e solo se l'oggetto non è presente al suo interno.
-            if object not in getattr(subject, predicate):
-                getattr(subject, predicate).append(object)
-        else:
-            # Il valore di una Datatype Property è una lista con un solo valore (letterale).
-            # Modificarne il valore significa settare il nuovo valore assunto dal letterale.
-            setattr(subject, predicate, [object])
+        # Il valore di una Object o Datatype Property associata a un certo inividuo è una lista di oggetti (individui
+        # o valori). L'aggiunta alla lista deve essere effettuata se e solo se l'oggetto non è presente al suo interno.
+        if object not in getattr(subject, predicate):
+            getattr(subject, predicate).append(object)
 
     def add_doc_keys(self, document, keys):
         """

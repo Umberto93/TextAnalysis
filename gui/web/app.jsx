@@ -39,6 +39,10 @@ class App extends React.Component {
                             return <ArticleDetails id={route.split('/')[1]} />
                         case '#classification':
                             return <Classification />
+                        case '#query':
+                            return <QueryBuilder />
+                        case '#about':
+                            return <About />
                         default:
                             return <NotFound />
                     }
@@ -80,7 +84,7 @@ class NavMenu extends React.Component {
             },
             {
                 hash: '#classification',
-                name: 'Text Classification',
+                name: 'Text Processing',
                 icon: 'fa-cogs'
             },
             {
@@ -133,7 +137,7 @@ class ArticlesSection extends React.Component {
         super(props);
 
         this.state = {
-            category: '',
+            category: {},
             keywords: [],
             showDetails: false,
             document: {}
@@ -145,8 +149,7 @@ class ArticlesSection extends React.Component {
 
     setCategory(category) {
         this.setState({
-            category: category.id,
-            keywords: []
+            category: category
         }, () => {
             location.hash = `#articles?category=${category.value}`
         });
@@ -154,12 +157,15 @@ class ArticlesSection extends React.Component {
 
     setKeywords(keywords) {
         this.setState({
-            keywords: keywords,
-            category: ''
+            keywords: keywords
         }, () => {
-            location.hash = `#articles?keywords=${keywords.map(key => {
-                return key.value
-            }).join(',')}`
+            if (keywords.length > 0) {
+                location.hash = `#articles?keywords=${keywords.map(key => {
+                    return key.value
+                }).join(',')}`
+            } else {
+                location.hash = `#articles?category=${this.state.category.value}`;
+            }
         });
     }
 
@@ -171,7 +177,7 @@ class ArticlesSection extends React.Component {
                     setKeywords={this.setKeywords}
                 />
                 <ArticlesList
-                    category={this.state.category}
+                    category={this.state.category.id}
                     keywords={this.state.keywords}
                     setCategory={this.setCategory}
                     setKeywords={this.setKeywords}
@@ -243,7 +249,7 @@ class ArticlesList extends React.Component {
     getDocumentsByCategory() {
         eel.py_request('/articles', {
             has_category: this.props.category
-        })(documents => {
+        }, ['has_path'])(documents => {
             this.setState({
                 documents: documents,
                 loading: false
@@ -293,6 +299,7 @@ class ArticleDetails extends React.Component {
 
         this.state = {
             document: null,
+            relatedDocuments: [],
             loading: true
         };
 
@@ -302,7 +309,8 @@ class ArticleDetails extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps !== this.props) {
             this.setState({
-                loading: true
+                loading: true,
+                relatedDocuments: [],
             }, () => {
                 this.getDocumentDetails();
             });
@@ -313,9 +321,25 @@ class ArticleDetails extends React.Component {
         eel.py_request('/article', {
             id: this.props.id
         })(document => {
+            console.log(document);
             this.setState({
                 document: document,
                 loading: false
+            }, () => {
+                this.getRelatedDocuments()
+            });
+        });
+    }
+
+    getRelatedDocuments() {
+        eel.py_request('/related', {
+            category: this.state.document.has_category[0].has_name,
+            keywords: this.state.document.has_keyword.map(key => {
+                return key.has_value
+            })
+        })(articles => {
+            this.setState({
+                relatedDocuments: articles
             });
         });
     }
@@ -338,9 +362,43 @@ class ArticleDetails extends React.Component {
                             </section>
                             <section>
                                 <h2>Related Links</h2>
+                                <ul className="related related-links">
+                                    {Object.keys(this.state.document).map(key => {
+                                        if (key.startsWith('has_entity')) {
+                                            const entities = this.state.document[key];
+
+                                            if (typeof entities === 'string') {
+                                                return (
+                                                    <li>
+                                                        <a href={entities}>{entities}</a>
+                                                    </li>
+                                                );
+                                            } else {
+                                                return (
+                                                    entities.map(entity => {
+                                                        return (
+                                                            <li>
+                                                                <a href={entity}>{entity}</a>
+                                                            </li>
+                                                        );
+                                                    })
+                                                );
+                                            }
+                                        }
+                                    })}
+                                </ul>
                             </section>
                             <section>
                                 <h2>Related Articles</h2>
+                                <ul className="related related-documents">
+                                    {this.state.relatedDocuments.map(doc => {
+                                        return (
+                                            <li>
+                                                <a href={`#articles/${doc}`}>{doc}</a>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
                             </section>
                         </article>
                         <aside className="document-keywords">
@@ -348,7 +406,9 @@ class ArticleDetails extends React.Component {
                             <ul>
                                 {this.state.document.has_keyword.map(key => {
                                     return (
-                                        <li>{key.has_value}</li>
+                                        <li className="keyword">
+                                            <span>{key.has_value}</span>
+                                        </li>
                                     );
                                 })}
                             </ul>
@@ -363,13 +423,296 @@ class ArticleDetails extends React.Component {
 class Classification extends React.Component {
     constructor() {
         super();
+
+        this.state = {
+            content: '',
+            loading: false,
+            alert: false
+        };
+
+        this.onValueChange = this.onValueChange.bind(this);
+        this.onSearch = this.onSearch.bind(this);
+    }
+
+    onValueChange(event) {
+        this.setState({
+            content: event.target.value
+        });
+    }
+
+    onSearch() {
+        this.setState({
+            loading: true
+        }, () => {
+            this.extractInfo();
+        });
+    }
+
+    extractInfo() {
+        eel.py_request('/processing', {
+            content: this.state.content
+        })(documentId => {
+            if (documentId) {
+                location.hash = `#articles/${documentId}`;
+            } else {
+                this.setState({
+                    alert: true
+                });
+            }
+        });
     }
 
     render() {
         return (
-            <section>
-                CIAOOOO
+            <section className="text-processing">
+                {
+                    this.state.loading ?
+                        <Loading /> :
+                        <React.Fragment>
+                            <h2>Text Processing</h2>
+                            <textarea
+                                className="text-processing-input"
+                                placeholder="Insert text to process..."
+                                value={this.state.content}
+                                onChange={this.onValueChange}
+                            ></textarea>
+                            <div className="search-area text-processing-search">
+                                <button
+                                    className="search-area-button text-processing-search-button"
+                                    type="button"
+                                    onClick={this.onSearch}
+                                >
+                                    Process Text
+                                </button>
+                            </div>
+                            {
+                                this.alert && <Alert
+                                    message="Error during text processing..."
+                                />
+                            }
+                        </React.Fragment>
+                }
             </section>
+        );
+    }
+}
+
+class QueryBuilder extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.ontoPath = 'http://www.fantastic4.org/BigData/FinalProject/of4-ontology.owl#';
+        this.queryTemplate = `
+        PREFIX of4: <${this.ontoPath}>
+        SELECT DISTINCT ?doc 
+        WHERE { 
+            ?doc of4:has_category ?cat .
+            ?cat a of4:Business .
+            ?doc of4:has_keyword ?key .
+            ?key of4:has_value ?v . 
+            ?doc of4:has_entity_organisation ?org .
+            FILTER REGEX (str(?v), '(internet|warner|google)', 'i') .
+            FILTER REGEX (str(?org), '(http://dbpedia.org/resource/Warner_Bros|http://dbpedia.org/resource/Bertelsmann)', 'i') .
+        }
+        `
+
+        this.state = {
+            content: this.queryTemplate.trim().replace(/\s{2,}/g, '\n'),
+            loading: false,
+            results: [],
+            alert: ''
+        }
+
+        this.onValueChange = this.onValueChange.bind(this);
+        this.onSearch = this.onSearch.bind(this);
+    }
+
+    onValueChange(event) {
+        this.setState({
+            content: event.target.value
+        });
+    }
+
+    onSearch() {
+        this.setState({
+            loading: true
+        }, () => {
+            this.runQuery();
+        });
+    }
+
+    runQuery() {
+        eel.py_request('/query', {
+            query: this.state.content.replace(/\n/g, ' ')
+        })(res => {
+            if (res.success) {
+                const value = res.resQuery[0];
+                this.setState({
+                    loading: false,
+                    results: typeof (value) === 'boolean' ? [].concat(value.toString()) : value
+                });
+            } else {
+                console.log(res);
+                this.setState({
+                    loading: false,
+                    alert: res.message
+                });
+            }
+        });
+    }
+
+    render() {
+        return (
+            <section className="query-builder">
+                <h2>QueryBuilder</h2>
+                <div className="info">
+                    Yor're able to run <b>SELECT and ASK SPARQL query</b>. Since we're using 
+                    owlready2 and the library provides <b>any support for HAVING clause</b>, you 
+                    won't be able to run query with this clause specified.
+                </div>
+                <textarea
+                    className="query-builder-input"
+                    value={this.state.content}
+                    spellcheck="false"
+                    onChange={this.onValueChange}
+                ></textarea>
+                <div className="search-area text-processing-search">
+                    <button
+                        className="search-area-button text-processing-search-button"
+                        type="button"
+                        onClick={this.onSearch}
+                    >
+                        {this.state.loading ? <Loading /> : 'Run Query'}
+                    </button>
+                </div>
+                {this.state.results.length > 0 &&
+                    <table className="query-results">
+                        <thead>
+                            <tr>
+                                <th colSpan="2">Query Results</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className="query-results-title">
+                                <td>#</td>
+                                <td>Values</td>
+                            </tr>
+                            {this.state.results.map((res, i) => {
+                                return (
+                                    <tr className="query-results-values">
+                                        <td>{i}</td>
+                                        <td>{res}</td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>}
+                {this.state.alert && <Alert message={this.state.alert} />}
+            </section>
+        );
+    }
+}
+
+class About extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.team = [
+            {
+                id: '0622700670',
+                email: 'u.iennaco@unisa.it',
+                name: 'Umberto Iennaco',
+                counterpart: 'Human Torch',
+                icon: 'fa fa-fire',
+                customClass: 'ui-card'
+            },
+            {
+                id: '0622700690',
+                email: 'l.fusco14@unisa.it',
+                name: 'Laura Fusco',
+                counterpart: 'Invisible Girl',
+                icon: 'fa fa-cloud',
+                customClass: 'lf-card'
+            },
+            {
+                id: '0622700804',
+                email: 'v.magna@unisa.it',
+                name: 'Vincenzo Magna',
+                counterpart: 'Mr. Fantastic',
+                icon: 'fa fa-tint',
+                customClass: 'vm-card'
+            },
+            {
+                id: '0622700811',
+                email: 's.damico8@unisa.it',
+                name: 'Stefano D\'Amico',
+                counterpart: 'The Thing',
+                icon: 'fa fa-globe',
+                customClass: 'sd-card'
+            },
+        ];
+    }
+
+    render() {
+        return (
+            <section className="about-us f4">
+                <header>
+                    <h2>About Us</h2>
+                    <p className="info">
+                        <b>K</b><i>eyword</i><b>EN</b><i>tity</i><b>C</b><i>ategor</i><b>Y</b>,
+                        in short <b>KENCY</b>, is a system that provides user with the possibility
+                        to navigate a collection of predefined articles and, eventually, enrich it 
+                        uploading new ones. The aim is to <b>perform keywords and entities 
+                        extraction</b>, <b>text classification</b> and also <b>make advanced research
+                        operations</b>. One of the most important features is the possibility to
+                        navigate a list of related articles and consult the complete list of dbpedia
+                        entities extracted from the text. Finally, it's worth highlight the entire
+                        collection is represented through individuals, gathered in our custom and
+                        well defined ontology, and this is the reason why we provide the user with
+                        the possibility to freely query the available Knowledge Base.
+                    </p>
+                </header>
+                <article>
+                    <h2>Our Team</h2>
+                    <ul class="cards">
+                        {this.team.map(member => {
+                            return (
+                                <li className={member.customClass}>
+                                    <h3 className="name">{member.name}</h3>
+                                    <small className="counterpart">{member.counterpart}</small>
+                                    <div className="element">
+                                        <i className={member.icon}></i>
+                                    </div>
+                                    <address className="user">
+                                        <div className="id">{member.id}</div>
+                                        <a
+                                            href={`mailto:${member.email}`}
+                                            className="e-mail"
+                                        >
+                                            {member.email}
+                                        </a>
+                                    </address>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </article>
+            </section>
+        );
+    }
+}
+
+class Alert extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="alert">
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                {this.props.message}
+            </div>
         );
     }
 }
@@ -562,6 +905,8 @@ class Search extends React.Component {
     removeKeyword(keyword) {
         this.setState({
             selectedKeywords: this.remove(keyword)
+        }, () => {
+            this.props.setKeywords(this.state.selectedKeywords);
         });
     }
 

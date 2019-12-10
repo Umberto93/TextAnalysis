@@ -34,16 +34,19 @@ print("=========================================================================
 kency = Kency(ob, ke, tc, er, dataset_path, user_path)
 
 @eel.expose
-def py_request(pathname, params=None):
+def py_request(pathname, params=None, include=[]):
     if pathname == '/articles':
-        include = params.include if 'include' in params.keys() else []
         return kency.get_documents(params, include_props=include)
     if pathname == '/article':
         return kency.get_document_details(params)
+    if pathname == '/related':
+        return kency.get_related_documents(params['category'], params['keywords'])
     if pathname == '/keywords':
         return kency.get_words_starting_with(params)
-    if pathname == '#classification':
-        return 'classification'
+    if pathname == '/processing':
+        return kency.process_user_text(params['content'])
+    if pathname == '/query':
+        return kency.run_query(params['query'])
     if pathname == '/categories':
         return kency.get_categories()
 

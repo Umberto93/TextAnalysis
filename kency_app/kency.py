@@ -78,11 +78,11 @@ class Kency:
         """
 
         if 'id' in params.keys() and type(self._onto[params['id']]) == self._onto['Document']:
-            return self._build_obj(self._onto[params['id']])
+            return self._build_obj(self._onto[params['id']], res={})
 
         return None
 
-    def get_related_documents(self, category, keywords, min_kic=2):
+    def get_related_documents(self, category, keywords, min_kic=3):
         """
         Restituisce tutti i documenti appartenenti alla categoria specificata che condividono un sottoinsieme delle
         keyword passate come parametro.
@@ -171,6 +171,33 @@ class Kency:
 
         # Salvataggio delle modifiche effettuate sull'ontologia
         self._ob.save_onto()
+
+        return new_doc_name
+
+    def run_query(self, query):
+        """
+        Permette di eseguire una query SPARQL, specificata dall'utente, sull'ontologia.
+
+        :param query: stringa che indica la query da eseguire.
+        :return: un dizionario contenente due campi:
+            - message: messaggio contenente informazioni sull'esito della query;
+            - resQuery: risultato della query (in caso di errore sarà una lista vuota).
+        """
+
+        res = {
+            'message': '',
+            'success': False,
+            'resQuery': []
+        }
+
+        try:
+            res['message'] = 'Query successfully executed.'
+            res['resQuery'] = list(self._query_builder.get_graph().query(query))
+            res['success'] = True
+        except:
+            res['message'] = 'Query syntax error.'
+
+        return res
 
     def _init_system(self):
         """ Effettua l'inizializzazione del sistema occupandosi della creazione o del caricamento dell'ontologia. """

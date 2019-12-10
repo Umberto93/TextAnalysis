@@ -1,3 +1,6 @@
+/**
+ * Componente principale.
+ */
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -370,7 +373,10 @@ class ArticleDetails extends React.Component {
                                             if (typeof entities === 'string') {
                                                 return (
                                                     <li>
-                                                        <a href={entities}>{entities}</a>
+                                                        <a
+                                                            href={entities}
+                                                            target="_blank">{entities}
+                                                        </a>
                                                     </li>
                                                 );
                                             } else {
@@ -378,7 +384,10 @@ class ArticleDetails extends React.Component {
                                                     entities.map(entity => {
                                                         return (
                                                             <li>
-                                                                <a href={entity}>{entity}</a>
+                                                                <a
+                                                                    href={entity}
+                                                                    target="_blank"
+                                                                >{entity}</a>
                                                             </li>
                                                         );
                                                     })
@@ -424,6 +433,8 @@ class Classification extends React.Component {
     constructor() {
         super();
 
+        this.MIN_CONTTENT_LENGTH;
+
         this.state = {
             content: '',
             loading: false,
@@ -441,11 +452,13 @@ class Classification extends React.Component {
     }
 
     onSearch() {
-        this.setState({
-            loading: true
-        }, () => {
-            this.extractInfo();
-        });
+        if (this.state.content.trim() && this.state.content.length >= this.MIN_CONTTENT_LENGTH) {
+            this.setState({
+                loading: true
+            }, () => {
+                this.extractInfo();
+            });
+        }
     }
 
     extractInfo() {
@@ -472,7 +485,7 @@ class Classification extends React.Component {
                             <h2>Text Processing</h2>
                             <textarea
                                 className="text-processing-input"
-                                placeholder="Insert text to process..."
+                                placeholder="Insert text to process (min 140 characters)..."
                                 value={this.state.content}
                                 onChange={this.onValueChange}
                             ></textarea>
@@ -545,14 +558,15 @@ class QueryBuilder extends React.Component {
         eel.py_request('/query', {
             query: this.state.content.replace(/\n/g, ' ')
         })(res => {
+            console.log(res);
             if (res.success) {
-                const value = res.resQuery[0];
+                const value = res.resQuery;
+
                 this.setState({
                     loading: false,
-                    results: typeof (value) === 'boolean' ? [].concat(value.toString()) : value
+                    results: typeof (value[0]) === 'boolean' ? [[].concat(value[0].toString())] : value
                 });
             } else {
-                console.log(res);
                 this.setState({
                     loading: false,
                     alert: res.message
@@ -566,8 +580,8 @@ class QueryBuilder extends React.Component {
             <section className="query-builder">
                 <h2>QueryBuilder</h2>
                 <div className="info">
-                    Yor're able to run <b>SELECT and ASK SPARQL query</b>. Since we're using 
-                    owlready2 and the library provides <b>any support for HAVING clause</b>, you 
+                    Yor're able to run <b>SELECT and ASK SPARQL query</b>. Since we're using
+                    owlready2 and the library provides <b>any support for HAVING clause</b>, you
                     won't be able to run query with this clause specified.
                 </div>
                 <textarea
@@ -589,20 +603,32 @@ class QueryBuilder extends React.Component {
                     <table className="query-results">
                         <thead>
                             <tr>
-                                <th colSpan="2">Query Results</th>
+                                <th colSpan="3">Query Results</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className="query-results-title">
-                                <td>#</td>
-                                <td>Values</td>
-                            </tr>
-                            {this.state.results.map((res, i) => {
+                            {this.state.results.map((row, i) => {
+
                                 return (
-                                    <tr className="query-results-values">
-                                        <td>{i}</td>
-                                        <td>{res}</td>
-                                    </tr>
+                                    <React.Fragment>
+                                        {i === 0 &&
+                                            <tr className="query-results-title">
+                                                <td>#</td>
+                                                {row.map((col, i) => {
+                                                    return (
+                                                        <td>Value {i + 1}</td>
+                                                    );
+                                                })}
+                                            </tr>}
+                                        <tr className="query-results-values">
+                                            <td>{i + 1}</td>
+                                            {row.map((col, i) => {
+                                                return (
+                                                    <td>{col}</td>
+                                                );
+                                            })}
+                                        </tr>
+                                    </React.Fragment>
                                 );
                             })}
                         </tbody>
@@ -661,8 +687,8 @@ class About extends React.Component {
                     <p className="info">
                         <b>K</b><i>eyword</i><b>EN</b><i>tity</i><b>C</b><i>ategor</i><b>Y</b>,
                         in short <b>KENCY</b>, is a system that provides user with the possibility
-                        to navigate a collection of predefined articles and, eventually, enrich it 
-                        uploading new ones. The aim is to <b>perform keywords and entities 
+                        to navigate a collection of predefined articles and, eventually, enrich it
+                        uploading new ones. The aim is to <b>perform keywords and entities
                         extraction</b>, <b>text classification</b> and also <b>make advanced research
                         operations</b>. One of the most important features is the possibility to
                         navigate a list of related articles and consult the complete list of dbpedia

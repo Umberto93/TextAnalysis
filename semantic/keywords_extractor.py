@@ -1,15 +1,31 @@
+from math import ceil
+
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 
 
 class KeywordsExtractor:
+    """ Questa classe si occupa dell'estrazione delle keyword. """
+
     def __init__(self):
         self._keywords = {}
         self._countVectorizer = CountVectorizer(max_df=0.85, max_features=10000)
         self._tfidf_transformer = TfidfTransformer()
 
     def extract(self, category_docs, topn=10):
+        """
+        Estrae le keyword associate al set di documenti passati in ingresso.
 
+        :param category_docs: dizionario contenente il set di documenti, relativi alla categoria di interesse,
+        da cui estrarre le keyword. In particolare:
+            - chive: rappresenta il nome del documento;
+            - valore: rappresenta il testo su cui è stata effettuata l'operazione di pulizia.
+        :param topn: numero di keywords che desideriamo estrarre per ogni documento. Per default vengono estratte
+        le prime 10 keyword che hanno il valore più alto di TFIDF.
+        :return: dizionario contenente la lista di keyword associate ad ogni documento. In particolare:
+            - chiave: rappresenta il nome del documento;
+            - valore: lista di keyword associate al documento.
+        """
         if not category_docs:
             return {}
 
@@ -20,7 +36,8 @@ class KeywordsExtractor:
 
     def __str__(self):
         """
-        Stampa la lista di keyword per ogni documento
+        Stampa la lista di keyword per ogni documento.
+
         :return: L'output per la stampa
         """
         output = ''
@@ -33,8 +50,9 @@ class KeywordsExtractor:
     def _build_keywords(self, docs, topn):
         """
         Costruisce la lista di keywords.
+
         :param docs: Una lista contenente il testo dei documenti.
-        :return:
+        :return: la lista di keywords estratte.
         """
         self._keywords = {}
         feature_names = self._countVectorizer.get_feature_names()
@@ -50,6 +68,7 @@ class KeywordsExtractor:
     def _sort_coo(self, coo_matrix):
         """
         Ordina la matrice delle cooccorrenze in ordine decrescente.
+
         :param coo_matrix: La matrice delle cooccorrenze.
         :return: Il set di risultati ordinati.
         """
@@ -59,6 +78,7 @@ class KeywordsExtractor:
     def _extract_topn_from_vector(self, feature_names, sorted_items, topn):
         """
         Estrae le n parole chiave dalla matrice delle cooccorrenze.
+
         :param feature_names: Possibili keywords del dataset.
         :param sorted_items: La matrice delle cooccorrenze.
         :param topn: Le n keywords da estrarre.

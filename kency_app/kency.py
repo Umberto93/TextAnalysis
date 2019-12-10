@@ -142,6 +142,7 @@ class Kency:
         testo all'interno dell'ontologia.
 
         :param text: testo da processare
+        :return: new_doc_name: nome relativo all'individuo di classe Document appena creato.
         """
 
         # Setto l'insieme dei docs..
@@ -181,6 +182,8 @@ class Kency:
         :param query: stringa che indica la query da eseguire.
         :return: un dizionario contenente due campi:
             - message: messaggio contenente informazioni sull'esito della query;
+            - success: valore booleano che indica l'esito dell'operazione (True se è andato tutto a buon fine,
+            False altrimenti)
             - resQuery: risultato della query (in caso di errore sarà una lista vuota).
         """
 
@@ -253,10 +256,7 @@ class Kency:
             # Estrazione delle entità di interesse associate al documento e assegnazione.
             # Ciascuna entità è identificata dal relativo URI in DBpedia e viene assegnata
             # all'istanza del documento attraverso la relativa datatype property.
-            for i, (doc_name, doc_text) in enumerate(docs.items()):
-                # <!-- QUESTA PARTE SERVE SOLO PER NON FARE TROPPE RICHIESTE MENTRE FACCIAMO LE PROVE --!> #
-                if i == 2:
-                    break
+            for doc_name, doc_text in docs.items():
                 doc = self._ob.get_individual(doc_name)
                 doc_entities = self._er.get_entities(doc_text)
                 self._ob.add_doc_entities(doc, doc_entities)

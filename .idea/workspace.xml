@@ -3,13 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="330c414a-8751-4b37-932a-266addb341f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/kency_app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/kency_app/main_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/of4-ontology.owl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/web/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gui/web/app.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/web/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/gui/web/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/web/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/kency_app/web/app.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/kency_app/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/web/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/web/src/kency.svg" beforeDir="false" afterPath="$PROJECT_DIR$/kency_app/web/src/kency.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/web/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/kency_app/web/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kency_app/kency.py" beforeDir="false" afterPath="$PROJECT_DIR$/kency_app/kency.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ontology/ontology_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/ontology/ontology_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/file_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/file_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/semantic/keywords_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/semantic/keywords_extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_docs/Entertainment/user_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_docs/Entertainment/user_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_docs/Entertainment/user_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_docs/Other/user_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_docs/Other/user_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_docs/Other/user_3.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,6 +77,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Unisa\Big Data\Progetto\TextAnalysis\gui" />
       <recent name="C:\Users\laura\Desktop\Big Data\TextAnalysis-master\ontology" />
       <recent name="C:\Users\laura\Desktop\Big Data\TextAnalysis-master\utils" />
     </key>
@@ -83,29 +94,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.gui">
-    <configuration name="file_manager" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="TextAnalysis" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/file_manager.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.main">
     <configuration name="gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TextAnalysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -172,6 +161,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="main (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TextAnalysis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/kency" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kency/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TextAnalysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -180,12 +191,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ontology" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/kency_app" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ontology/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kency_app/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -196,11 +207,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.main (2)" />
         <item itemvalue="Python.gui" />
         <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.kency_api" />
-        <item itemvalue="Python.file_manager" />
-        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -243,7 +254,9 @@
       <workItem from="1575880542368" duration="2918000" />
       <workItem from="1575901052464" duration="1274000" />
       <workItem from="1575907217491" duration="6034000" />
-      <workItem from="1575968235468" duration="7130000" />
+      <workItem from="1575968235468" duration="7870000" />
+      <workItem from="1575989362058" duration="52000" />
+      <workItem from="1575989452118" duration="1127000" />
     </task>
     <servers />
   </component>
@@ -264,7 +277,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/TextAnalysis$gui.coverage" NAME="gui Coverage Results" MODIFIED="1575979412392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
+    <SUITE FILE_PATH="coverage/TextAnalysis$gui.coverage" NAME="gui Coverage Results" MODIFIED="1575986570592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
     <SUITE FILE_PATH="coverage/TextAnalysis$ontology_builder.coverage" NAME="ontology_builder Coverage Results" MODIFIED="1574772352224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ontology" />
     <SUITE FILE_PATH="coverage/TextAnalysis$init_system.coverage" NAME="init_system Coverage Results" MODIFIED="1575451256077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kency" />
     <SUITE FILE_PATH="coverage/TextAnalysis$file_manager.coverage" NAME="file_manager Coverage Results" MODIFIED="1575564295553" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
@@ -276,6 +289,7 @@
     <SUITE FILE_PATH="coverage/TextAnalysis$kency_api.coverage" NAME="kency_api Coverage Results" MODIFIED="1575716233120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/TextAnalysis$domains.coverage" NAME="domains Coverage Results" MODIFIED="1574505065568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/preprocessing" />
     <SUITE FILE_PATH="coverage/TextAnalysis$dandelion_api.coverage" NAME="dandelion_api Coverage Results" MODIFIED="1574506628546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/semantic" />
-    <SUITE FILE_PATH="coverage/TextAnalysis$main.coverage" NAME="main Coverage Results" MODIFIED="1575495795148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ontology" />
+    <SUITE FILE_PATH="coverage/TextAnalysis$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1575989675888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kency" />
+    <SUITE FILE_PATH="coverage/TextAnalysis$main.coverage" NAME="main Coverage Results" MODIFIED="1575991061419" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kency_app" />
   </component>
 </project>

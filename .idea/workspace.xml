@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="330c414a-8751-4b37-932a-266addb341f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kency_app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/kency_app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kency_app/of4-ontology.owl" beforeDir="false" afterPath="$PROJECT_DIR$/kency_app/of4-ontology.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kency_app/web/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/kency_app/web/app.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -239,7 +242,9 @@
       <workItem from="1575907217491" duration="6034000" />
       <workItem from="1575968235468" duration="7870000" />
       <workItem from="1575989362058" duration="52000" />
-      <workItem from="1575989452118" duration="1791000" />
+      <workItem from="1575989452118" duration="1792000" />
+      <workItem from="1576139954386" duration="2405000" />
+      <workItem from="1576142385026" duration="715000" />
     </task>
     <servers />
   </component>
@@ -273,6 +278,6 @@
     <SUITE FILE_PATH="coverage/TextAnalysis$domains.coverage" NAME="domains Coverage Results" MODIFIED="1574505065568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/preprocessing" />
     <SUITE FILE_PATH="coverage/TextAnalysis$dandelion_api.coverage" NAME="dandelion_api Coverage Results" MODIFIED="1574506628546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/semantic" />
     <SUITE FILE_PATH="coverage/TextAnalysis$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1575989675888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kency" />
-    <SUITE FILE_PATH="coverage/TextAnalysis$main.coverage" NAME="main Coverage Results" MODIFIED="1575991407796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kency_app" />
+    <SUITE FILE_PATH="coverage/TextAnalysis$main.coverage" NAME="main Coverage Results" MODIFIED="1576142802948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kency_app" />
   </component>
 </project>

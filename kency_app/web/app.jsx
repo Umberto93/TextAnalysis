@@ -324,7 +324,6 @@ class ArticleDetails extends React.Component {
         eel.py_request('/article', {
             id: this.props.id
         })(document => {
-            console.log(document);
             this.setState({
                 document: document,
                 loading: false
@@ -433,7 +432,7 @@ class Classification extends React.Component {
     constructor() {
         super();
 
-        this.MIN_CONTTENT_LENGTH;
+        this.MIN_CONTTENT_LENGTH = 140;
 
         this.state = {
             content: '',
@@ -646,7 +645,7 @@ class About extends React.Component {
         this.team = [
             {
                 id: '0622700670',
-                email: 'u.iennaco@unisa.it',
+                email: 'u.iennaco@studenti.unisa.it',
                 name: 'Umberto Iennaco',
                 counterpart: 'Human Torch',
                 icon: 'fa fa-fire',
@@ -654,7 +653,7 @@ class About extends React.Component {
             },
             {
                 id: '0622700690',
-                email: 'l.fusco14@unisa.it',
+                email: 'l.fusco14@studenti.unisa.it',
                 name: 'Laura Fusco',
                 counterpart: 'Invisible Girl',
                 icon: 'fa fa-cloud',
@@ -662,7 +661,7 @@ class About extends React.Component {
             },
             {
                 id: '0622700804',
-                email: 'v.magna@unisa.it',
+                email: 'v.magna@studenti.unisa.it',
                 name: 'Vincenzo Magna',
                 counterpart: 'Mr. Fantastic',
                 icon: 'fa fa-tint',
@@ -670,7 +669,7 @@ class About extends React.Component {
             },
             {
                 id: '0622700811',
-                email: 's.damico8@unisa.it',
+                email: 's.damico8@studenti.unisa.it',
                 name: 'Stefano D\'Amico',
                 counterpart: 'The Thing',
                 icon: 'fa fa-globe',
@@ -699,7 +698,7 @@ class About extends React.Component {
                     </p>
                 </header>
                 <article>
-                    <h2>Our Team</h2>
+                    <h2>Fantastic 4 Team</h2>
                     <ul class="cards">
                         {this.team.map(member => {
                             return (

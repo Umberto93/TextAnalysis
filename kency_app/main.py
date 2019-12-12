@@ -44,7 +44,7 @@ def py_request(pathname, params=None, include=[]):
     if pathname == '/keywords':
         return kency.get_words_starting_with(params)
     if pathname == '/processing':
-        return kency.process_user_text(params['content'])
+        return kency.process_user_text(str(params['content']))
     if pathname == '/query':
         return kency.run_query(params['query'])
     if pathname == '/categories':

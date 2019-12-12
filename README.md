@@ -33,7 +33,7 @@ Dopo aver spostato tutti i documenti, bisognerà cancellare la precedente ontolo
 **ATTENZIONE: non cancellare o alterare in alcun modo la struttura o i nomi delle cartelle contenente i documenti (dataset, user_docs)!**
 
 **Fantastici 4**
-__D'Amico Stefano__
-__Fusco Laura__
-__Iennaco Umberto__
-__Magna Vincenzo__
+- _D'Amico Stefano_
+- _Fusco Laura_
+- _Iennaco Umberto_
+- _Magna Vincenzo_

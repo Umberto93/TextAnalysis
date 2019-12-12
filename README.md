@@ -1,12 +1,12 @@
-#KENCY APP
+# KENCY APP
 
-AVVIO DEL SISTEMA
+## AVVIO DEL SISTEMA
 
 Avviare la classe main.py; una volta avviata l'applicazione verrà caricata l'ontologia (of4-ontology.owl), se presente, altrimenti verrà creata ex novo. In console sarà possibile monitorare l'avanzamento della fase di inizializzazione del sistema. A questo punto il sistema sarà operativo e verrà avviata l'interfaccia grafica.
 L'operazione di creazione dell'ontologia potrebbe richiedere un paio di minuti a causa delle nuomerose richieste necessarie per processare l'intero dataset. È necessario pertanto disporre di una connessione Internet.
 
 
-UTILIZZO DEL SISTEMA
+## UTILIZZO DEL SISTEMA
 
 Una volta avviata l'interfaccia grafica, l'utente potrà accedere ai seguenti servizi:
 
@@ -20,7 +20,7 @@ NB: La libreria owlready2 non permettere di specificare query utilizzando la cla
 - About Us: informazioni sul progetto e sugli autori.
 
 
-REFACTOR DELL'ONTOLOGIA
+## REFACTOR DELL'ONTOLOGIA
 
 I documenti caricati dall'utente vengono salvati all'interno di una cartella chiamata user_docs contenente le stesse cartelle del dataset.
 In alcune circostanze potrebbe essere necessario ricreare nuovamente l'ontologia in quanto: 
@@ -30,10 +30,10 @@ In alcune circostanze potrebbe essere necessario ricreare nuovamente l'ontologia
 
 Dopo aver spostato tutti i documenti, bisognerà cancellare la precedente ontologia e riavviare il sistema. 
 
-ATTENZIONE: non cancellare o alterare in alcun modo la struttura o i nomi delle cartelle contenente i documenti (dataset, user_docs)!
+**ATTENZIONE: non cancellare o alterare in alcun modo la struttura o i nomi delle cartelle contenente i documenti (dataset, user_docs)!**
 
-Fantastici 4
-D'Amico Stefano
-Fusco Laura
-Iennaco Umberto
-Magna Vincenzo
+**Fantastici 4**
+__D'Amico Stefano__
+__Fusco Laura__
+__Iennaco Umberto__
+__Magna Vincenzo__

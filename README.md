@@ -1,5 +1,7 @@
 # KENCY APP
 
+[![PyPI pyversions](https://i.imgur.com/4OQOBCx.png)](https://pypi.python.org/pypi/ansicolortags/) 
+
 ## AVVIO DEL SISTEMA
 
 Avviare la classe main.py; una volta avviata l'applicazione verrà caricata l'ontologia (of4-ontology.owl), se presente, altrimenti verrà creata ex novo. In console sarà possibile monitorare l'avanzamento della fase di inizializzazione del sistema. A questo punto il sistema sarà operativo e verrà avviata l'interfaccia grafica.

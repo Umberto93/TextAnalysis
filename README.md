@@ -12,14 +12,14 @@ L'operazione di creazione dell'ontologia potrebbe richiedere un paio di minuti a
 
 Una volta avviata l'interfaccia grafica, l'utente potrà accedere ai seguenti servizi:
 
-- Articles: consultare la lista di articoli relativi alla categoria in esame e accedere ai dettagli di ogni singolo documento nonché filtrare gli articoli per keywords o categoria. Non è possibile specificare più di tre keywords nella barra di ricerca. Inoltre, per avviare la ricerca, è necessario cliccare sull'icona simboleggiante la lente di ingrandimento;
+- _Articles_: consultare la lista di articoli relativi alla categoria in esame e accedere ai dettagli di ogni singolo documento nonché filtrare gli articoli per keywords o categoria. Non è possibile specificare più di tre keywords nella barra di ricerca. Inoltre, per avviare la ricerca, è necessario cliccare sull'icona simboleggiante la lente di ingrandimento;
 
-- Text Processing: inserire il testo di un documento da processare al fine di ottenerne la categoria, le keyowrds, le entità e gli eventuali articoli correlati. All'interno della textarea è necessario inserire un testo di lunghezza non inferiore ai 140 caratteri e che rispetta la codifica UTF-8;
+- _Text Processing_: inserire il testo di un documento da processare al fine di ottenerne la categoria, le keyowrds, le entità e gli eventuali articoli correlati. All'interno della textarea è necessario inserire un testo di lunghezza non inferiore ai 140 caratteri e che rispetta la codifica UTF-8;
 
-- Query Builder: eseguire query SPARQL utilizzando le clausole SELECT e ASK in quanto le uniche due che abbiamo scelto di supportare. 
+- _Query Builder_: eseguire query SPARQL utilizzando le clausole SELECT e ASK in quanto le uniche due che abbiamo scelto di supportare. 
 NB: La libreria owlready2 non permettere di specificare query utilizzando la clausola HAVING;
 
-- About Us: informazioni sul progetto e sugli autori.
+- _About Us_: informazioni sul progetto e sugli autori.
 
 
 ## REFACTOR DELL'ONTOLOGIA

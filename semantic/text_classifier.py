@@ -19,7 +19,7 @@ class TextClassifier(TokenHandler):
         self._model = "IAB_en"
         self._model_cat = "|".join(self._onto_cat.keys())
 
-    def get_categories(self, text, min_score = 0.75):
+    def get_category(self, text, min_score = 0.75):
         """
         Dato un testo permette di individuarne la categoria di appartenenza.
 

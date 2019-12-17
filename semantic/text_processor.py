@@ -36,7 +36,7 @@ class TextProcessor:
 
         # Uso del classificatore (API Meaning Cloud) per recuperare la categoria a cui appartiene il documento
         # insieme alla relativa percentuale di appartenenza (score).
-        cat = self._tc.get_categories(text)
+        cat = self._tc.get_category(text)
         cat_name = cat['name']
 
         # Salvataggio documento nella relativa cartella utente.
@@ -45,7 +45,7 @@ class TextProcessor:
         # Pulizia testo
         cleaned_text = clean_text(text)
         # Estrazione keywords associate al testo
-        doc_keys = self._extract_keyword(cat_name, fname, cleaned_text)
+        doc_keys = self._extract_keywords(cat_name, fname, cleaned_text)
         # Estrazione entità associate al testo
         doc_ents  = self._er.get_entities(cleaned_text)
 
@@ -70,7 +70,7 @@ class TextProcessor:
         self._file_manager.write_file(self._user_path + '/' + cat_name + '/' + fname, text)
         return fname
 
-    def _extract_keyword(self, cat_name, fname, cleaned_text):
+    def _extract_keywords(self, cat_name, fname, cleaned_text):
         """
         Estrazione delle keyword relative al testo passato come parametro di input.
 

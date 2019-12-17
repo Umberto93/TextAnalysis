@@ -61,13 +61,19 @@ class TextProcessor:
         :return: nome del file in cui è stato salvato il testo.
         """
 
+        user_cat_dir_path = self._user_path + '/' + cat_name
+
+        # Se non esiste la cartella contenente i file caricati dall'utente, relativi alla categoria in esame, la creo.
+        if not os.path.exists(user_cat_dir_path):
+            os.makedirs(user_cat_dir_path)
+
         # Costruzione del nome da assegnare al documento in cui salveremo il testo passato come parametro di ingresso.
             # Conto i file contenuti all'interno della cartella relativa alla categoria a cui appartiene il documento
-        num_docs = len(os.listdir(self._user_path + '/' + cat_name))
+        num_docs = len(os.listdir(user_cat_dir_path))
             # Aggiungo 1 e ottengo, così, il nome da assegnare al nuovo documento.
         fname = 'user_' + str(num_docs + 1) + '.txt'
 
-        self._file_manager.write_file(self._user_path + '/' + cat_name + '/' + fname, text)
+        self._file_manager.write_file(user_cat_dir_path + '/' + fname, text)
         return fname
 
     def _extract_keywords(self, cat_name, fname, cleaned_text):
